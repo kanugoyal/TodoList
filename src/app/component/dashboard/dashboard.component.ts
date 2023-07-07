@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { Task } from 'src/app/model/task';
 import { CrudService } from 'src/app/service/crud.service';
 
+import { Observable } from 'rxjs';
+import {tap, catchError } from 'rxjs/operators'
+
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
@@ -26,41 +29,55 @@ export class DashboardComponent implements OnInit{
     
   }
 
-  getAllTask(){
-    this.crudService.getAllTask().subscribe(res => {
-      this.taskArr = res;
-    },err => {
-      alert("Unable to get the list of tasks")
-    })
+  getAllTask() {
+    this.crudService.getAllTask().pipe(
+      tap((res) => {
+        this.taskArr = res;
+      }),
+      catchError((err) => {
+        alert("Unable to get the list of tasks");
+        return [];
+      })
+    ).subscribe();
   }
 
   addTask() {
     this.taskObj.task_name = this.addTaskValue;
-    this.crudService.addTask(this.taskObj).subscribe(res => {
-      this.ngOnInit();
-      this.addTaskValue = '';
-    }, err => {
-      alert(err);
-
-    })
+    this.crudService.addTask(this.taskObj).pipe(
+      tap((res) => {
+        this.ngOnInit();
+        this.addTaskValue = '';
+      }),
+      catchError((err) => {
+        alert(err);
+        return [];
+      })
+    ).subscribe();
   }
 
   editTask() {
     this.taskObj.task_name = this.editTaskValue;
-    this.crudService.editTask(this.taskObj).subscribe(res => {
-      this.ngOnInit();
-    }, err => {
-      alert("Failed to update task");
-
-    })
+    this.crudService.editTask(this.taskObj).pipe(
+      tap((res) => {
+        this.ngOnInit();
+      }),
+      catchError((err) => {
+        alert("Failed to update task");
+        return [];
+      })
+    ).subscribe();
   }
 
-  deleteTask(etask : Task) {
-    this.crudService.deleteTask(etask).subscribe(res => {
-      this.ngOnInit();
-    }, err => {
-      alert("Failed to delete task");
-    })
+  deleteTask(etask: Task) {
+    this.crudService.deleteTask(etask).pipe(
+      tap((res) => {
+        this.ngOnInit();
+      }),
+      catchError((err) => {
+        alert("Failed to delete task");
+        return [];
+      })
+    ).subscribe();
   }
 
   call(etask : Task) {

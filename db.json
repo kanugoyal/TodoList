@@ -2,15 +2,7 @@
   "tasks": [
     {
       "id": 1,
-      "task_name": "Start your Learning"
-    },
-    {
-      "id": 2,
-      "task_name": "Start your learning"
-    },
-    {
-      "id": 3,
-      "task_name": "Start your learning"
+      "task_name": "Start your certification"
     }
   ]
 }

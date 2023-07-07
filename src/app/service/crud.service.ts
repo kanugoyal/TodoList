@@ -1,7 +1,8 @@
 import{HttpClient} from '@angular/common/http'
 import { Injectable } from '@angular/core';
-import { Task } from '../model/task';
 import {Observable} from 'rxjs';
+import { Task } from '../model/task';
+
 
 @Injectable({
   providedIn: 'root'
@@ -29,8 +30,6 @@ export class CrudService {
   editTask(task : Task) : Observable<Task> {
     return this.http.put<Task>(this.serviceURL+'/'+task.id,task)
   }
-
-  
 
   
 

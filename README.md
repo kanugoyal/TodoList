@@ -1,8 +1,25 @@
 # TodoList
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.1.3.
+This is a basic web application created using Angular as a part of my learning project. The application allows users to manage their to-do list by adding, editing, and deleting tasks.
 
-## Development server
+[Link to Scribe Document](https://scribehow.com/shared/Create_and_update_tasks_for_learning_and_shopping_lists__Vunj5_QrQniefoqCF4xmcg)
+
+## Features
+
+- Add a new task to the to-do list.
+- Edit the existing tasks.
+- Delete tasks from the list.
+
+To run this project, make sure you have the following installed on your machine:
+
+- Node.js
+- Angular CLI
+
+## Navigate to the project directory:
+Run cd TodoList
+
+## Start development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
 
